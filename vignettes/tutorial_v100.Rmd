@@ -1,0 +1,20 @@
+---
+title: "tutorial_v100"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tutorial_v100}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Load libraries
+```{r lib, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+library(HiVE)
+```
