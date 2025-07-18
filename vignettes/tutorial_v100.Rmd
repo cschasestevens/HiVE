@@ -14,7 +14,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Load libraries
+## Load libraries and set directory
 ```{r lib, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
 library(HiVE)
+# Set working directory
+getwd()
+setwd("/home/ncsteven/analyze/1_packages")
+```
+
+## Connect to database and retrieve edges and nodes
+```{r lib, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+# Connect to HiVE database
+db1 <- DBI::dbConnect(RSQLite::SQLite(), "HiVE/HiVE.db")
 ```

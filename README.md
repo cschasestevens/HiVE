@@ -1,4 +1,4 @@
-# HiVE v1.00 (20250627)
+# HiVE v1.00 (20250714)
 
 High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 
@@ -20,7 +20,11 @@ This package provides tools for comprehensive visualization and analysis of mult
     * Imports: 
         * ggplot2,
         * viridis,
-        * ggsci
+        * ggsci,
+        * RColorBrewer,
+        * rcdk,
+        * igraph,
+        * ggraph
 
 ### Installation
 * Run the following in a new R session on the command line or within R-Studio:

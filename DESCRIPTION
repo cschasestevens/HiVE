@@ -1,5 +1,5 @@
 Package: HiVE
-Date: 2025-06-27
+Date: 2025-07-14
 Type: Package
 Title: High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 Version: 1.00
@@ -19,4 +19,7 @@ Imports:
   ggplot2,
   ggsci,
   viridis,
-  RColorBrewer
+  RColorBrewer,
+  rcdk,
+  igraph,
+  ggraph

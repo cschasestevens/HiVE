@@ -179,7 +179,7 @@ net_theme <- function(
       axis.title.x = ggplot2::element_blank(),
       axis.title.y = ggplot2::element_blank(),
       # Edit legend
-      legend.position = leg,
+      legend.position.inside = leg,
       legend.text = ggplot2::element_text(
         size = 14
       ),
