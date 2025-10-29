@@ -1,0 +1,152 @@
+Node	Name	synthesis.pathway	SetID	Level
+O-Chol	7-alpha-hydroxy-4-cholesten-3-one	Cholesterol Catabolism	Base	0
+OH-Chol	7-alpha-hydroxycholesterol	Cholesterol Catabolism	Base	0
+TC	Tauro-cholic acid	Cholesterol Catabolism	Base	0
+TCX	Tauro-chenodeoxycholic acid	Cholesterol Catabolism	Base	0
+aFA	Fatty acid amide	Fatty Acid Biosynthesis	Base	0
+FA	Fatty acid	Fatty Acid Biosynthesis	Base	0
+FAHFA	Fatty acid ester of hydroxy fatty acid	Fatty Acid Biosynthesis	Base	0
+N-acylglycine	N-acylglycine	Fatty Acid Biosynthesis	Base	0
+Citrate	Citrate	Fatty Acid Biosynthesis	Base	0
+M-CoA	Malonyl-CoA	Fatty Acid Biosynthesis	Base	0
+OH-FA	Hydroxy fatty acid	Fatty Acid Biosynthesis	Base	0
+FA-CoA	Fatty acyl-CoA	Fatty Acid Biosynthesis	Base	0
+DG	Diacylglycerol	Glycerolipid Biosynthesis	Base	0
+TG	Triacylglycerol	Glycerolipid Biosynthesis	Base	0
+MG	Monoacylglycerol	Glycerolipid Biosynthesis	Base	0
+CDP-DG	CDP-Diacylglycerol	Glycerolipid Biosynthesis	Base	0
+CAR	Carnitine	Lipid Transport	Base	0
+CoA	Acetyl-CoA	Lipid Transport	Base	0
+AC	Acylcarnitine	Lipid Transport	Base	0
+ALOX	"HETE, EET, HpETE, LX, LT"	Oxylipin Biosynthesis	Base	0
+ALOX.D	"HETE, EET, HpETE, LX, LT"	Oxylipin Biosynthesis	Base	0
+ALOX.E	"HETE, EET, HpETE, LX, LT"	Oxylipin Biosynthesis	Base	0
+ALOX.O	"HETE, EET, HpETE, LX, LT"	Oxylipin Biosynthesis	Base	0
+PTGS2	Prostaglandin	Oxylipin Biosynthesis	Base	0
+BMP	Bis(monoacylglycero)phosphate	Phospholipid Biosynthesis	Base	0
+CL	Cardiolipin	Phospholipid Biosynthesis	Base	0
+HBMP	Hemi-bis(monoacylglycero)phosphate	Phospholipid Biosynthesis	Base	0
+LPC	Lysophosphatidylcholine	Phospholipid Biosynthesis	Base	0
+LPE	Lysophosphatidylethanolamine	Phospholipid Biosynthesis	Base	0
+LPG	Lysophosphatidylglycerol	Phospholipid Biosynthesis	Base	0
+LPI	Lysophosphatidylinositol	Phospholipid Biosynthesis	Base	0
+LPS	Lysophosphatidylserine	Phospholipid Biosynthesis	Base	0
+PC	Phosphatidylcholine	Phospholipid Biosynthesis	Base	0
+PE	Phosphatidylethanolamine	Phospholipid Biosynthesis	Base	0
+PG	Phosphatidylglycerol	Phospholipid Biosynthesis	Base	0
+PI	Phosphatidylinositol	Phospholipid Biosynthesis	Base	0
+pLPE	PlasmenylLPE	Plasmalogen Biosynthesis	Base	0
+pPC	PlasmenylPC	Plasmalogen Biosynthesis	Base	0
+pPE	PlasmenylPE	Plasmalogen Biosynthesis	Base	0
+PS	Phosphatidylserine	Phospholipid Biosynthesis	Base	0
+DHAP	DHAP	Plasmalogen Biosynthesis	Base	0
+G3P	Glycerol-3-phosphate	Phospholipid Biosynthesis	Base	0
+LPA	Lysophosphatidic acid	Phospholipid Biosynthesis	Base	0
+PA	Phosphatidic acid	Phospholipid Biosynthesis	Base	0
+PGP	Phosphatidylglycerol phosphate	Phospholipid Biosynthesis	Base	0
+pDG	PlasmenylDG	Plasmalogen Biosynthesis	Base	0
+pLPC	PlasmenylLPC	Plasmalogen Biosynthesis	Base	0
+GPI	Glycophosphatidylinositol	Phospholipid Biosynthesis	Base	0
+Cer	Ceramide	Sphingolipid Biosynthesis	Base	0
+Cer1P	Ceramide 1-phosphate	Sphingolipid Biosynthesis	Base	0
+dhCer	Dihydroceramide	Sphingolipid Biosynthesis	Base	0
+dhSM	Dihydrosphingomyelin	Sphingolipid Biosynthesis	Base	0
+dhSph	Dihydrosphingosine	Sphingolipid Biosynthesis	Base	0
+HexCer	Glycosylceramide	Sphingolipid Biosynthesis	Base	0
+SM	Sphingomyelin	Sphingolipid Biosynthesis	Base	0
+Sph	Sphingosine	Sphingolipid Biosynthesis	Base	0
+O-dhSph	3-ketodihydrosphingosine	Sphingolipid Biosynthesis	Base	0
+Ser	Serine	Sphingolipid Biosynthesis	Base	0
+A-Cer	Acylceramide	Sphingolipid Biosynthesis	Base	0
+S1P	Sphingosine 1-phosphate	Sphingolipid Biosynthesis	Base	0
+CE	Cholesterol Ester	Sterol Lipid Biosynthesis	Base	0
+Chol	Cholesterol	Sterol Lipid Biosynthesis	Base	0
+HMG-CoA	HMG-CoA	Sterol Lipid Biosynthesis	Base	0
+Mevalonate	Mevalonate	Sterol Lipid Biosynthesis	Base	0
+Phospholipid	Phospholipid	Arachidonic Acid Cascade	Oxylipins	1
+Arachidonic acid	Arachidonic acid	Arachidonic Acid Cascade	Oxylipins	1
+DiHETrE	Dihydroxyeicosatrienoic acid	Arachidonic Acid Cascade	Oxylipins	1
+EET	Epoxyeicosatrienoic acid	Arachidonic Acid Cascade	Oxylipins	1
+HpETE	Hydroperoxyeicosatrienoic acid	Arachidonic Acid Cascade	Oxylipins	1
+HETE	Hydroxyeicosatrienoic acid	Arachidonic Acid Cascade	Oxylipins	1
+oxoETE	Oxoeicosatrienoic acid	Arachidonic Acid Cascade	Oxylipins	1
+LXB	Lipoxin	Arachidonic Acid Cascade	Oxylipins	1
+Leukotriene	Leukotriene	Arachidonic Acid Cascade	Oxylipins	1
+Prostaglandin	Prostaglandin	Arachidonic Acid Cascade	Oxylipins	1
+Thromboxane/PTG Derivatives	Thromboxane/PTG Derivatives	Arachidonic Acid Cascade	Oxylipins	1
+DHA	Docosahexaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+HpDHA	Hydroperoxydocosahexaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+HDHA	Hydroxydocosahexaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+EDHA	Epoxydocosahexaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+DiHDHA	Dihydroxydocosahexaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+EPA	Eicosapentaenoic acid	Eicosanoid Biosynthesis	Oxylipins	1
+HpEPE	Hydroperoxyeicosapentaenoic acid	Eicosanoid Biosynthesis	Oxylipins	1
+HEPE	Hydroxyeicosapentaenoic acid	Eicosanoid Biosynthesis	Oxylipins	1
+EpETE	Epoxyeicosatetraenoic acid	Eicosanoid Biosynthesis	Oxylipins	1
+DiHEPE	Dihydroxyeicosapentaenoic acid	Eicosanoid Biosynthesis	Oxylipins	1
+DPA	Docosapentaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+HpDPE	Hydroperoxydocosapentaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+HDPE	Hydroxydocosapentaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+EpDPE	Epoxydocosapentaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+DiHDPE	Dihydroxydocosapentaenoic acid	Docosanoid Biosynthesis	Oxylipins	1
+RvD	Resolvin D	Docosanoid Biosynthesis	Oxylipins	1
+RvE	Resolvin E	Eicosanoid Biosynthesis	Oxylipins	1
+RvT	Resolvin T	Docosanoid Biosynthesis	Oxylipins	1
+PD	Protectin D	Docosanoid Biosynthesis	Oxylipins	1
+MaR	Maresin	Docosanoid Biosynthesis	Oxylipins	1
+LA	Linoleic acid	Octadecanoid Biosynthesis	Oxylipins	1
+HpODE	Hydroperoxyoctadecadienoic acid	Octadecanoid Biosynthesis	Oxylipins	1
+HODE	Hydroxyoctadecadienoic acid	Octadecanoid Biosynthesis	Oxylipins	1
+EpOME	Epoxyoctadecenoic acid	Octadecanoid Biosynthesis	Oxylipins	1
+DiHODE	Dihydroxyoctadecadienoic acid	Octadecanoid Biosynthesis	Oxylipins	1
+TriHOME	Trihydroxyoctadecenoic acid	Octadecanoid Biosynthesis	Oxylipins	1
+7-alpha-hydroxy-4-cholesten-3-one	7-alpha-hydroxy-4-cholesten-3-one	Bile Acids	Cholesterol Catabolism	1
+7-alpha-hydroxycholesterol	7-alpha-hydroxycholesterol	Bile Acids	Cholesterol Catabolism	1
+Tauro-chenodeoxycholic acid	Tauro-chenodeoxycholic acid	Bile Acids	Cholesterol Catabolism	1
+Tauro-cholic acid	Tauro-cholic acid	Bile Acids	Cholesterol Catabolism	1
+Acetyl-CoA	Acetyl-CoA	Lipid precursors	Fatty Acid Metabolism	1
+Citrate	Citrate	Lipid precursors	Fatty Acid Metabolism	1
+Malonyl-CoA	Malonyl-CoA	Lipid precursors	Fatty Acid Metabolism	1
+Mono/polyunsaturated fatty acid	Mono/polyunsaturated fatty acid	Fatty Acids	Fatty Acid Metabolism	1
+CDP-Diacylglycerol	CDP-Diacylglycerol	Glycerolipids	Glycerolipid Metabolism	1
+Diacylglycerol	Diacylglycerol	Glycerolipids	Glycerolipid Metabolism	1
+Glycerol-3-phosphate	Glycerol-3-phosphate	Glycerolipids	Glycerolipid Metabolism	1
+Monoacylglycerol	Monoacylglycerol	Glycerolipids	Glycerolipid Metabolism	1
+Triacylglycerol	Triacylglycerol	Glycerolipids	Glycerolipid Metabolism	1
+Acylcarnitine	Acylcarnitine	Carnitines	Lipid Transport	1
+Carnitine	Carnitine	Carnitines	Lipid Transport	1
+Fatty acyl-CoA	Fatty acyl-CoA	Lipid precursors	Lipid Transport	1
+Cardiolipin	Cardiolipin	Phospholipids	Phospholipid Metabolism	1
+DHAP	DHAP	Lipid precursors	Phospholipid Metabolism	1
+Glycophosphatidylinositol	Glycophosphatidylinositol	Phospholipids	Phospholipid Metabolism	1
+Lysophosphatidic acid	Lysophosphatidic acid	Glycerophospholipids	Phospholipid Metabolism	1
+Lysophosphatidylcholine	Lysophosphatidylcholine	Glycerophospholipids	Phospholipid Metabolism	1
+Lysophosphatidylethanolamine	Lysophosphatidylethanolamine	Glycerophospholipids	Phospholipid Metabolism	1
+Lysophosphatidylglycerol	Lysophosphatidylglycerol	Glycerophospholipids	Phospholipid Metabolism	1
+Lysophosphatidylinositol	Lysophosphatidylinositol	Glycerophospholipids	Phospholipid Metabolism	1
+Lysophosphatidylserine	Lysophosphatidylserine	Glycerophospholipids	Phospholipid Metabolism	1
+Phosphatidic acid	Phosphatidic acid	Glycerophospholipids	Phospholipid Metabolism	1
+Phosphatidylcholine	Phosphatidylcholine	Glycerophospholipids	Phospholipid Metabolism	1
+Phosphatidylethanolamine	Phosphatidylethanolamine	Glycerophospholipids	Phospholipid Metabolism	1
+Phosphatidylglycerol	Phosphatidylglycerol	Phospholipids	Phospholipid Metabolism	1
+Phosphatidylglycerol phosphate	Phosphatidylglycerol phosphate	Phospholipids	Phospholipid Metabolism	1
+Phosphatidylinositol	Phosphatidylinositol	Phospholipids	Phospholipid Metabolism	1
+Phosphatidylserine	Phosphatidylserine	Glycerophospholipids	Phospholipid Metabolism	1
+Plasmalogen	Plasmalogen	Phospholipids	Phospholipid Metabolism	1
+3-ketodihydrosphingosine	3-ketodihydrosphingosine	Lipid precursors	Sphingolipid Metabolism	1
+Acylceramide	Acylceramide	Sphingolipids	Sphingolipid Metabolism	1
+Ceramide	Ceramide	Sphingolipids	Sphingolipid Metabolism	1
+Ceramide 1-phosphate	Ceramide 1-phosphate	Sphingolipids	Sphingolipid Metabolism	1
+Dihydroceramide	Dihydroceramide	Sphingolipids	Sphingolipid Metabolism	1
+Dihydrosphingosine	Dihydrosphingosine	Lipid precursors	Sphingolipid Metabolism	1
+Glycosylceramide	Glycosylceramide	Sphingolipids	Sphingolipid Metabolism	1
+Lactosylceramide	Lactosylceramide	Sphingolipids	Sphingolipid Metabolism	1
+Saturated FA/Palmitic acid	Saturated FA/Palmitic acid	Fatty Acids	Sphingolipid Metabolism	1
+Serine	Serine	Lipid precursors	Sphingolipid Metabolism	1
+Sphingomyelin	Sphingomyelin	Sphingolipids	Sphingolipid Metabolism	1
+Sphingosine	Sphingosine	Sphingolipids	Sphingolipid Metabolism	1
+Sphingosine 1-phosphate	Sphingosine 1-phosphate	Sphingolipids	Sphingolipid Metabolism	1
+Cholesterol	Cholesterol	Sterols	Sterol Lipid Metabolism	1
+Cholesterol Ester	Cholesterol Ester	Sterols	Sterol Lipid Metabolism	1
+HMG-CoA	HMG-CoA	Lipid precursors	Sterol Lipid Metabolism	1
+Mevalonate	Mevalonate	Lipid precursors	Sterol Lipid Metabolism	1
