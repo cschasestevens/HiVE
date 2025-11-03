@@ -34,7 +34,7 @@ This package provides tools for comprehensive visualization and analysis of mult
 ```
 devtools::install_github(
   "cschasestevens/HiVE", 
-  ref = "master", 
+  ref = "main", 
   build_vignettes = TRUE
 )
 ```

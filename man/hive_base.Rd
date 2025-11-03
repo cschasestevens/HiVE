@@ -4,7 +4,12 @@
 \alias{hive_base}
 \title{Lipid Network Plot}
 \usage{
-hive_base()
+hive_base(level = 0)
+}
+\arguments{
+\item{level}{Base level to plot (either 0 or 1). Level 1 contains
+finer class-based separation while 0 (default) plots higher level
+lipid classes.}
 }
 \value{
 A ggplot2 object plotting the HiVE base network.

@@ -6,6 +6,10 @@
 #' annotations assigned by this reference enable mapping of any
 #' untargeted or targeted lipidomics dataset onto the network.
 #'
+#' @param level Base level to plot (either 0 or 1). Level 1 contains
+#' finer class-based separation while 0 (default) plots higher level
+#' lipid classes.
+#'
 #' @return A ggplot2 object plotting the HiVE base network.
 #' @examples
 #'
@@ -13,12 +17,18 @@
 #' # hive_base()
 #'
 #' @export
-hive_base <- function() {
+hive_base <- function(
+  level = 0
+) {
   #---- Base network ----
+  # format edges
+  ne <- nedge[nedge[["Level"]] == level, ] # nolint
+  # format nodes
+  nn <- nnode[nnode[["Level"]] == level, ] # nolint
   # Create network
   np <- igraph::graph_from_data_frame(
-    nedge, # nolint
-    vertices = nnode # nolint
+    ne,
+    vertices = nn
   )
   npl <- ggraph::create_layout(np, layout = "stress", circular = FALSE)
   # define boundary polygon for each subclass

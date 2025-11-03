@@ -15,8 +15,14 @@ knitr::opts_chunk$set(
 ```
 
 ## Load libraries and set directory
-```{r lib, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r lib, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 library(HiVE)
 # Set working directory
 getwd()
+```
+
+## Plot HiVE base network
+```{r netbase, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
+# Base
+hive_base()
 ```
