@@ -28,13 +28,13 @@ view_structure <- function(
   img1 <- rcdk::view.image.2d(mol1[[1]], depictor = depictor)
   ## Plot images
   plot(1:20, 1:20, col = "white", axes = FALSE, ann = FALSE)
-  rasterImage(img1, 1, 1, 20, 20)
+  graphics::rasterImage(img1, 1, 1, 20, 20)
   # Save image
   if(sav == TRUE) { # nolint
-    png(title1, width = 10, height = 10, units = "cm", res = 1000)
+    grDevices::png(title1, width = 10, height = 10, units = "cm", res = 1000)
     plot(1:20, 1:20, col = "white", axes = FALSE, ann = FALSE)
-    par(mar = rep(0, 4))
-    rasterImage(img1, 1, 1, 20, 20)
-    dev.off()
+    graphics::par(mar = rep(0, 4))
+    graphics::rasterImage(img1, 1, 1, 20, 20)
+    grDevices::dev.off()
   }
 }

@@ -1,15 +1,15 @@
 Package: HiVE
-Date: 2025-07-14
+Date: 2025-11-03
 Type: Package
 Title: High-dimensional lipid Visualization and Enrichment analysis (HiVE)
-Version: 1.00
+Version: 1.01
 Author: Nathanial C. Stevens
 Maintainer: Nathanial C. Stevens <cschasestevens@gmail.com>
 Description: This package provides tools for comprehensive visualization and analysis of multiomics data characterizing lipids.    HiVE integrates underlying knowledge of curated lipid metabolic pathways for quick mapping and analysis of lipidomics data onto a predefined network structure.    Flexible data formats supported by HiVE also enable simultaneous or individual mapping of complementary proteomics or transcriptomics datasets containing lipid metabolizing enzymes or lipid-related genes.
-License: GPL-3
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 Suggests: 
   knitr,
@@ -17,9 +17,13 @@ Suggests:
   reticulate
 Imports: 
   ggplot2,
+  dplyr,
+  ggrepel,
   ggsci,
   viridis,
   RColorBrewer,
   rcdk,
   igraph,
   ggraph
+Depends: 
+    R (>= 3.5)

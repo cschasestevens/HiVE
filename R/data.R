@@ -1,0 +1,36 @@
+#' Lipid Network Nodes
+#'
+#' Node metadata for constructing a HiVE lipid network.
+#'
+#' @format ## `nnode`
+#' A data frame with 151 rows and 5 columns:
+#' \describe{
+#'   \item{Node}{shorthand node name}
+#'   \item{Name}{full node name}
+#'   \item{synthesis.pathway}{lipid synthesis pathway information}
+#'   \item{SetID}{lipid set identity}
+#'   \item{Level}{network level}
+#'   ...
+#' }
+#' @source HiVE v1.00
+"nnode"
+
+#' Lipid Network Edges
+#'
+#' Edge metadata for constructing a HiVE lipid network.
+#'
+#' @format ## `nedge`
+#' A data frame with 163 rows and 8 columns:
+#' \describe{
+#'   \item{from}{lipid precursor}
+#'   \item{to}{lipid product}
+#'   \item{synthesis.pathway}{lipid synthesis pathway information}
+#'   \item{leading.name}{representative gene/enzyme name}
+#'   \item{enzyme.id}{unique gene/enzyme identity code}
+#'   \item{hgnc.symbols}{associated genes}
+#'   \item{SetID}{lipid set identity}
+#'   \item{Level}{network level}
+#'   ...
+#' }
+#' @source HiVE v1.00
+"nedge"

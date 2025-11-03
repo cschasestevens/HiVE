@@ -1,4 +1,4 @@
-# HiVE v1.00 (20250714)
+# HiVE v1.01 (20251103)
 
 High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 
@@ -10,14 +10,16 @@ This package provides tools for comprehensive visualization and analysis of mult
 
 ### Dependencies
 * Windows 10-11, WSL Ubuntu 22.04 or higher, Linux Ubuntu 22.04 or higher, or macOS 12.7.1 or higher
-* R version 4.4.3 or higher (https://cran.r-project.org/)
+* R version 4.5.0 or higher (https://cran.r-project.org/)
 * (Optional) RStudio version 2023.06.2 or higher (https://posit.co/download/rstudio-desktop/)
 * R-packages (downloaded from CRAN unless otherwise specified):
     * Suggests: 
         * knitr,
         * rmarkdown,
         * reticulate
-    * Imports: 
+    * Imports:
+        * dplyr,
+        * ggrepel,
         * ggplot2,
         * viridis,
         * ggsci,
@@ -48,7 +50,7 @@ browseVignettes("HiVE")
 
 ```
 # Type function name after package name
-?HiVE::netbase()
+?HiVE::hive_base()
 ```
 
 ## Authors
@@ -59,6 +61,9 @@ browseVignettes("HiVE")
 * LinkedIn: https://www.linkedin.com/in/nathanial-chase-stevens-phd-08775180/
 
 ## Version History
+* 1.01
+    * Added HiVE base network
+    * Integrated HiVE node and edge metadata within package
 * 1.00
     * Initial Release
 

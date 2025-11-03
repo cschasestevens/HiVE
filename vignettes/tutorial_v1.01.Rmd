@@ -1,5 +1,5 @@
 ---
-title: "tutorial_v100"
+title: "tutorial_v1.01"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{tutorial_v100}
@@ -19,11 +19,4 @@ knitr::opts_chunk$set(
 library(HiVE)
 # Set working directory
 getwd()
-setwd("/home/ncsteven/analyze/1_packages")
-```
-
-## Connect to database and retrieve edges and nodes
-```{r lib, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
-# Connect to HiVE database
-db1 <- DBI::dbConnect(RSQLite::SQLite(), "HiVE/HiVE.db")
 ```
