@@ -12,7 +12,7 @@
 #'   \item{Level}{network level}
 #'   ...
 #' }
-#' @source HiVE v1.00
+#' @source HiVE v1.02
 "nnode"
 
 #' Lipid Network Edges
@@ -32,5 +32,27 @@
 #'   \item{Level}{network level}
 #'   ...
 #' }
-#' @source HiVE v1.00
+#' @source HiVE v1.02
 "nedge"
+
+#' Example Network Data 1
+#'
+#' Example data for constructing HiVE network plots
+#' based on lipidomics data.
+#'
+#' @format ## `d`
+#' A data frame with 53 rows and 9 columns:
+#' \describe{
+#'   \item{Cluster.ID}{lipid class ID}
+#'   \item{label.saturation}{lipid class stratified by saturation}
+#'   \item{p.value}{raw p-value}
+#'   \item{FDR}{FDR-adjusted p-value}
+#'   \item{n}{cluster size}
+#'   \item{Increased}{number of increased lipids within cluster}
+#'   \item{Decreased}{number of decreased lipids within cluster}
+#'   \item{Ratio}{proportion of increased/decreased lipids within cluster}
+#'   \item{label}{lipid class label}
+#'   ...
+#' }
+#' @source HiVE v1.02
+"d"

@@ -20,7 +20,7 @@ A data frame with 163 rows and 8 columns:
 }
 }
 \source{
-HiVE v1.00
+HiVE v1.02
 }
 \usage{
 nedge

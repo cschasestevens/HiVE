@@ -1,4 +1,4 @@
-# HiVE v1.01 (20251103)
+# HiVE v1.02 (20251103)
 
 High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 
@@ -61,6 +61,9 @@ browseVignettes("HiVE")
 * LinkedIn: https://www.linkedin.com/in/nathanial-chase-stevens-phd-08775180/
 
 ## Version History
+* 1.02
+    * Added example dataset
+    * Added HiVE annotation network
 * 1.01
     * Added HiVE base network
     * Integrated HiVE node and edge metadata within package

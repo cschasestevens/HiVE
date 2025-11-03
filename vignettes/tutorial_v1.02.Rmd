@@ -1,8 +1,8 @@
 ---
-title: "tutorial_v1.01"
+title: "tutorial_v1.02"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{tutorial_v100}
+  %\VignetteIndexEntry{tutorial_v1.02}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,8 +21,10 @@ library(HiVE)
 getwd()
 ```
 
-## Plot HiVE base network
+## Plot HiVE networks
 ```{r netbase, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Base
 hive_base()
+# Annotation counts
+hive_anno(enr_obj = d)
 ```

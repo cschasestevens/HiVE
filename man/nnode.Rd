@@ -17,7 +17,7 @@ A data frame with 151 rows and 5 columns:
 }
 }
 \source{
-HiVE v1.00
+HiVE v1.02
 }
 \usage{
 nnode

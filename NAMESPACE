@@ -3,6 +3,7 @@
 export(col_grad)
 export(col_univ)
 export(gen_theme)
+export(hive_anno)
 export(hive_base)
 export(net_theme)
 export(view_structure)
