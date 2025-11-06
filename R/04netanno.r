@@ -13,7 +13,7 @@
 #' nodes from the HiVE base network nodes to properly function. Example
 #' data are included for formatting help.
 #'
-#' @return A ggplot2 object plotting the HiVE base network.
+#' @return A ggplot2 object plotting the HiVE annotation network.
 #' @examples
 #'
 #' # ## Annotation count network

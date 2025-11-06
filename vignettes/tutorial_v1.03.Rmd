@@ -1,8 +1,8 @@
 ---
-title: "tutorial_v1.02"
+title: "tutorial_v1.03"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{tutorial_v1.02}
+  %\VignetteIndexEntry{tutorial_v1.03}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -27,4 +27,8 @@ getwd()
 hive_base()
 # Annotation counts
 hive_anno(enr_obj = d)
+# Enrichment network
+## Filter classes without saturation level information
+hive_enrch(enr_obj = d)
+# Planned: lipid class flux comparison
 ```

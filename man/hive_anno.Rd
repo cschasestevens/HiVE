@@ -17,7 +17,7 @@ nodes from the HiVE base network nodes to properly function. Example
 data are included for formatting help.}
 }
 \value{
-A ggplot2 object plotting the HiVE base network.
+A ggplot2 object plotting the HiVE annotation network.
 }
 \description{
 Extension of hive_base() for adding annotation count information
