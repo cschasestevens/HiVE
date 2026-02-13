@@ -1,4 +1,4 @@
-# HiVE v1.03 (20251106)
+# HiVE v1.10 (20260210)
 
 High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 
@@ -26,7 +26,9 @@ This package provides tools for comprehensive visualization and analysis of mult
         * RColorBrewer,
         * rcdk,
         * igraph,
-        * ggraph
+        * ggraph,
+        * sf,
+        * concaveman
 
 ### Installation
 * Run the following in a new R session on the command line or within R-Studio:
@@ -61,6 +63,13 @@ browseVignettes("HiVE")
 * LinkedIn: https://www.linkedin.com/in/nathanial-chase-stevens-phd-08775180/
 
 ## Version History
+* 1.10
+    * Updated Network structure for HiVE base and oxylipin pathways.
+    * Added support for COMb S4 objects as plot inputs, which are now the default option for all network plot types.
+    * Expression data from single-cell transcriptomics datasets are automatically filtered based on lipid-related genes present in HiVE edge data.
+    * Plot functions now support single-cell transcriptomics data provided from Seurat objects
+    * Updated tutorial to reflect changes in version 1.10
+    * Bioconductor packages now automatically installed
 * 1.03
     * Added HiVE enrichment network
 * 1.02

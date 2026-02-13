@@ -1,40 +1,35 @@
-#' Lipid Network Enrichment Plot
+#' Lipid Network Individual Data Plot
 #'
-#' Extension of hive_base() for plotting enrichment results onto
-#' a base HiVE network. Node sizes are proportional to the number
-#' of individual lipids present in the dataset for each class, node
-#' colors represent the proportion of increased/decreased lipids
-#' within a specific class, and yellow boxes indicate classes that
-#' are significantly enriched in the selected comparison. See
-#' HiVE example data for more details. Please note that if plotting
-#' data onto a subnetwork, additional data formatting is necessary as
-#' these data are usually not provided as enrichment objects.
+#' Extension of hive_base() for plotting individual abundance/expression
+#' results onto a base HiVE network. Node/edge colors represent the
+#' fold change for the specified comparison for individual lipid
+#' species/genes. See HiVE example data for more details.
+#' Note that these comparisons are most effective when plotted on
+#' a subnetwork.
 #'
 #' @param type Network type to plot; current lipid networks available are
-#' "base" (Default) and "oxylipins", which is a more detailed subnetwork
+#' "base" and "oxylipins" (Default), which is a more detailed subnetwork
 #' of HiVE base.
 #' @param lab_a Edge label alpha value.
-#' @param enr_obj An enrichment object including lipid class labels
-#' and the number of lipids within each class. The labels must match
+#' @param stat_obj A data frame of statistical results containing
+#' fold changes and p-values. The labels must match
 #' nodes from the HiVE base network nodes to properly function. Example
 #' data are included for formatting help.
-#' @param comp_sat Compare enrichment results split by lipid saturation.
-#' This is currently the only option but more will be supported in
-#' furture package versions.
 #'
-#' @return A ggplot2 object plotting a HiVE enrichment network.
+#' @return A ggplot2 object plotting individual annotation-level
+#' data onto the HiVE base network.
 #' @examples
 #'
 #' # ## Annotation count network
-#' # hive_enrch(enr_obj = d)
+#' # hive_indv(enr_obj = d)
 #'
 #' @export
-hive_enrch <- function( # nolint
+hive_indv <- function( # nolint
   type = "base",
   lab_a = 0.5,
-  enr_obj,
-  comp_sat = TRUE
+  stat_obj
 ) {
+  ## START HERE: add compatibility for Seurat objects
   if (type == "base") {
     # format edges
     ne <- nedge # nolint

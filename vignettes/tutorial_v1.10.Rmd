@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 library(HiVE)
 # Set working directory
 getwd()
+# Check example data
+d
 ```
 
 ## Plot HiVE networks

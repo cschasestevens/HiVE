@@ -6,9 +6,10 @@
 #' annotations assigned by this reference enable mapping of any
 #' untargeted or targeted lipidomics dataset onto the network.
 #'
-#' @param level Base level to plot (either 0 or 1). Level 1 contains
-#' finer class-based separation while 0 (default) plots higher level
-#' lipid classes.
+#' @param type Network type to plot; current lipid networks available are
+#' "base" (Default) and "oxylipins", which is a more detailed subnetwork
+#' of HiVE base.
+#' @param lab_a Alpha value for enzyme names (default is transparent).
 #'
 #' @return A ggplot2 object plotting the HiVE base network.
 #' @examples
@@ -18,68 +19,80 @@
 #'
 #' @export
 hive_base <- function(
-  level = 0
+  type = "base",
+  lab_a = 0.0
 ) {
-  #---- Base network ----
-  # format edges
-  ne <- nedge[nedge[["Level"]] == level, ] # nolint
-  # format nodes
-  nn <- nnode[nnode[["Level"]] == level, ] # nolint
+  if (type == "base") {
+    # format edges
+    ne <- nedge # nolint
+    # format nodes
+    nn <- nnode # nolint
+    ## gene/enzyme column
+    ne[["col.gene"]] <- ne[["enzyme.id"]]
+    ## pathway column
+    nn[["pathway"]] <- nn[["synthesis.pathway"]]
+  }
+  if (type == "oxylipins") {
+    # format edges
+    ne <- edgeoxy # nolint
+    # format nodes
+    nn <- nodeoxy # nolint
+    ## gene/enzyme column
+    ne[["col.gene"]] <- ne[["id.gene"]]
+    ## pathway column
+    nn[["pathway"]] <- nn[["fatty.acid"]]
+  }
   # Create network
   np <- igraph::graph_from_data_frame(
     ne,
     vertices = nn
   )
   npl <- ggraph::create_layout(np, layout = "stress", circular = FALSE)
-  # define boundary polygon for each subclass
-  npw <- dplyr::bind_rows(
-    lapply(
-      unique(npl[["synthesis.pathway"]]),
-      function(i) {
-        d1 <- npl[npl[["synthesis.pathway"]] == i, ]
-        y1 <- d1[d1[["x"]] < stats::quantile(d1[["x"]], 0.5), ]
-        y1 <- y1[order(y1[["y"]]), ]
-        y2 <- d1[d1[["x"]] > stats::quantile(d1[["x"]], 0.5), ]
-        y2 <- y2[order(y2[["y"]], decreasing = TRUE), ]
-        d4 <- dplyr::bind_rows(y1, y2)[, c("x", "y")]
-        d4[["pw"]] <- i
-        d2 <- data.frame(
-          "x" = c(
-            min(d1[["x"]]) - abs(0.15 * min(d1[["x"]])),
-            min(d1[["x"]]) - abs(0.15 * min(d1[["x"]])),
-            max(d1[["x"]]) + abs(0.15 * max(d1[["x"]])),
-            max(d1[["x"]]) + abs(0.15 * max(d1[["x"]]))
-          ),
-          "y" = c(
-            min(d1[["y"]]) - abs(0.15 * min(d1[["y"]])),
-            max(d1[["y"]]) + abs(0.15 * max(d1[["y"]])),
-            max(d1[["y"]]) + abs(0.15 * max(d1[["y"]])),
-            min(d1[["y"]]) - abs(0.15 * min(d1[["y"]]))
-          ),
-          "pw" = i
+  # Set manual coordinates for each node
+  npl[["x"]] <- npl[["hive_x"]]
+  npl[["y"]] <- npl[["hive_y"]]
+  # Define boundaries for each pathway and create node map
+  npw <- lapply(
+    unique(npl[["pathway"]]),
+    function(i) {
+      d1 <- npl[npl[["pathway"]] == i, ]
+      d2 <- dplyr::bind_rows(
+        lapply(
+          seq.int(1, nrow(d1), 1),
+          function(j) {
+            d1a <- d1[j, c("x", "y")]
+            d2a <- data.frame(
+              "x" = c(
+                d1a[["x"]] - 0.5,
+                d1a[["x"]] + 0.5,
+                d1a[["x"]] + 0.5,
+                d1a[["x"]] - 0.5
+              ),
+              "y" = c(
+                d1a[["y"]] + 0.5,
+                d1a[["y"]] + 0.5,
+                d1a[["y"]] - 0.5,
+                d1a[["y"]] - 0.5
+              )
+            )
+            d2a[["pw"]] <- i
+            return(d2a) # nolint
+          }
         )
-        return(d2) # nolint
-      }
-    )
+      )
+      d3 <- sf::st_as_sf(d2, coords = c("x", "y"))
+      d4 <- concaveman::concaveman(d3, concavity = 1)
+      d4[["pw"]] <- i
+      return(d4) # nolint
+    }
   )
-  npw[["pw"]] <- factor(
-    npw[["pw"]],
-    levels = c(
-      "Phospholipid Biosynthesis", "Fatty Acid Biosynthesis",
-      "Lipid Transport", "Plasmalogen Biosynthesis",
-      "Oxylipin Biosynthesis", "Sterol Lipid Biosynthesis",
-      "Cholesterol Catabolism", "Sphingolipid Biosynthesis",
-      "Glycerolipid Biosynthesis"
-    )
-  )
+  npw <- do.call(rbind, npw)
   ## Plot
   np_base <- ggraph::ggraph(npl) + # Base graph
     # Subclass shading
-    ggplot2::geom_polygon(
+    ggplot2::geom_sf(
       data = npw,
       ggplot2::aes(
-        x = .data[["x"]], # nolint
-        y = .data[["y"]],
         fill = .data[["pw"]]
       ),
       color = "grey25",
@@ -88,12 +101,16 @@ hive_base <- function(
     # node points
     ggraph::geom_node_point() +
     # graph edges and attributes
-    ggraph::geom_edge_link(
-      ggplot2::aes(label = .data[["enzyme.id"]]), # nolint
+    ggraph::geom_edge_arc(
+      ggplot2::aes(label = .data[["col.gene"]]), # nolint
+      curvature = 0.1,
       label_dodge = ggplot2::unit(2, "mm"),
+      arrow = ggplot2::arrow(length = ggplot2::unit(4, "mm"), type = "closed"),
+      start_cap = ggraph::circle(3, "mm"),
+      end_cap = ggraph::circle(3, "mm"),
       angle_calc = "along",
       alpha = 0.5,
-      label_alpha = 0.0,
+      label_alpha = 0.5,
       color = "grey50"
     ) +
     # color scheme

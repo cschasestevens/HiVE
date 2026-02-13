@@ -5,13 +5,15 @@
 #' of individual lipids present in the dataset for each class. See
 #' HiVE example data for more details.
 #'
-#' @param level Base level to plot (either 0 or 1). Level 1 contains
-#' finer class-based separation while 0 (default) plots higher level
-#' lipid classes.
+#' @param type Network type to plot; current lipid networks available are
+#' "base" (Default) and "oxylipins", which is a more detailed subnetwork
+#' of HiVE base.
+#' @param lab_a Alpha value for enzyme names (default is transparent).
 #' @param enr_obj An enrichment object including lipid class labels
 #' and the number of lipids within each class. The labels must match
 #' nodes from the HiVE base network nodes to properly function. Example
-#' data are included for formatting help.
+#' data are included for formatting help. Univariate statistical results
+#' can also be provided as input for annotating subnetwork plots.
 #'
 #' @return A ggplot2 object plotting the HiVE annotation network.
 #' @examples
@@ -21,33 +23,75 @@
 #'
 #' @export
 hive_anno <- function(
-  level = 0,
+  type = "base",
+  lab_a = 0.5,
   enr_obj
 ) {
-  # format edges
-  ne <- nedge[nedge[["Level"]] == level, ] # nolint
-  # format nodes
-  nn <- nnode[nnode[["Level"]] == level, ] # nolint
+  if (type == "base") {
+    # format edges
+    ne <- nedge # nolint
+    # format nodes
+    nn <- nnode # nolint
+    ## gene/enzyme column
+    ne[["col.gene"]] <- ne[["enzyme.id"]]
+    ## pathway column
+    nn[["pathway"]] <- nn[["synthesis.pathway"]]
+  }
+  if (type == "oxylipins") {
+    # format edges
+    ne <- edgeoxy # nolint
+    # format nodes
+    nn <- nodeoxy # nolint
+    ## gene/enzyme column
+    ne[["col.gene"]] <- ne[["id.gene"]]
+    ## pathway column
+    nn[["pathway"]] <- nn[["fatty.acid"]]
+  }
   # format data
   net1 <- enr_obj
   #---- Annotation network ----
   # Map dataset annotations
-  net_anno <- stats::setNames(stats::aggregate(
-    unique(net1[, c("label", "n")])[["n"]], # nolint
-    list(unique(net1[, c("label", "n")])[["label"]]),
-    function(x) sum(x)
-  ), c("Node", "cluster_size"))
-  ## Adjust node attributes
-  nn <- dplyr::left_join(
-    nn,
-    net_anno,
-    by = "Node"
-  )
-  nn[["cluster_size"]] <- ifelse(
-    is.na(nn[["cluster_size"]]),
-    0,
-    nn[["cluster_size"]]
-  )
+  if (type == "base") {
+    net_anno <- stats::setNames(stats::aggregate(
+      unique(net1[, c("label", "n")])[["n"]], # nolint
+      list(unique(net1[, c("label", "n")])[["label"]]),
+      function(x) sum(x)
+    ), c("Node", "cluster_size"))
+    nn <- dplyr::left_join(
+      nn,
+      net_anno,
+      by = "Node"
+    )
+    nn[["cluster_size"]] <- ifelse(
+      is.na(nn[["cluster_size"]]),
+      0,
+      nn[["cluster_size"]]
+    )
+  }
+  ## Alternate mapping function if plotting subnetworks
+  if (type == "oxylipins") {
+    net_anno <- stats::setNames(stats::aggregate(
+      net1[, c("label", "n")][["n"]], # nolint
+      list(net1[, c("label", "n")][["label"]]),
+      function(x) sum(x)
+    ), c("Node", "cluster_size"))
+    # Join and set cluster_size
+    nn <- dplyr::left_join(
+      nn,
+      net_anno,
+      by = "Node"
+    )
+    nn[["cluster_size"]] <- ifelse(
+      is.na(nn[["cluster_size"]]),
+      0,
+      nn[["cluster_size"]]
+    )
+    # Check for synonym matches in node list
+    nn[nn[["Synonyms"]] %in% net_anno[["Node"]], ][["cluster_size"]] <-
+      nn[nn[["Synonyms"]] %in% net_anno[["Node"]], ][["cluster_size"]] +
+      net_anno[net_anno[["Node"]] %in% nn[["Synonyms"]], ][["cluster_size"]]
+  }
+  ## Adjust additional node attributes
   nn[["set_alpha"]] <- (
     (nn[["cluster_size"]] - min(nn[["cluster_size"]])) /
       (max(nn[["cluster_size"]])) - min(nn[["cluster_size"]])
@@ -69,77 +113,76 @@ hive_anno <- function(
     vertices = nn
   )
   npl <- ggraph::create_layout(np, layout = "stress", circular = FALSE)
-  # define boundary polygon for each subclass
-  npw <- dplyr::bind_rows(
-    lapply(
-      unique(npl[["synthesis.pathway"]]),
-      function(i) {
-        d1 <- npl[npl[["synthesis.pathway"]] == i, ]
-        y1 <- d1[d1[["x"]] < stats::quantile(d1[["x"]], 0.5), ]
-        y1 <- y1[order(y1[["y"]]), ]
-        y2 <- d1[d1[["x"]] > stats::quantile(d1[["x"]], 0.5), ]
-        y2 <- y2[order(y2[["y"]], decreasing = TRUE), ]
-        d4 <- dplyr::bind_rows(y1, y2)[, c("x", "y")]
-        d4[["pw"]] <- i
-        d2 <- data.frame(
-          "x" = c(
-            min(d1[["x"]]) - abs(0.15 * min(d1[["x"]])),
-            min(d1[["x"]]) - abs(0.15 * min(d1[["x"]])),
-            max(d1[["x"]]) + abs(0.15 * max(d1[["x"]])),
-            max(d1[["x"]]) + abs(0.15 * max(d1[["x"]]))
-          ),
-          "y" = c(
-            min(d1[["y"]]) - abs(0.15 * min(d1[["y"]])),
-            max(d1[["y"]]) + abs(0.15 * max(d1[["y"]])),
-            max(d1[["y"]]) + abs(0.15 * max(d1[["y"]])),
-            min(d1[["y"]]) - abs(0.15 * min(d1[["y"]]))
-          ),
-          "pw" = i
+  # Set manual coordinates for each node
+  npl[["x"]] <- npl[["hive_x"]]
+  npl[["y"]] <- npl[["hive_y"]]
+  # Define boundaries for each pathway and create node map
+  npw <- lapply(
+    unique(npl[["pathway"]]),
+    function(i) {
+      d1 <- npl[npl[["pathway"]] == i, ]
+      d2 <- dplyr::bind_rows(
+        lapply(
+          seq.int(1, nrow(d1), 1),
+          function(j) {
+            d1a <- d1[j, c("x", "y")]
+            d2a <- data.frame(
+              "x" = c(
+                d1a[["x"]] - 0.5,
+                d1a[["x"]] + 0.5,
+                d1a[["x"]] + 0.5,
+                d1a[["x"]] - 0.5
+              ),
+              "y" = c(
+                d1a[["y"]] + 0.5,
+                d1a[["y"]] + 0.5,
+                d1a[["y"]] - 0.5,
+                d1a[["y"]] - 0.5
+              )
+            )
+            d2a[["pw"]] <- i
+            return(d2a) # nolint
+          }
         )
-        return(d2) # nolint
-      }
-    )
+      )
+      d3 <- sf::st_as_sf(d2, coords = c("x", "y"))
+      d4 <- concaveman::concaveman(d3, concavity = 1)
+      d4[["pw"]] <- i
+      return(d4) # nolint
+    }
   )
-  npw[["pw"]] <- factor(
-    npw[["pw"]],
-    levels = c(
-      "Phospholipid Biosynthesis", "Fatty Acid Biosynthesis",
-      "Lipid Transport", "Plasmalogen Biosynthesis",
-      "Oxylipin Biosynthesis", "Sterol Lipid Biosynthesis",
-      "Cholesterol Catabolism", "Sphingolipid Biosynthesis",
-      "Glycerolipid Biosynthesis"
-    )
-  )
+  npw <- do.call(rbind, npw)
   # Plot Annotations
   ## Plot
   np_anno <- ggraph::ggraph(npl) + # Base graph
     # Subclass shading
-    ggplot2::geom_polygon(
+    ggplot2::geom_sf(
       data = npw,
       ggplot2::aes(
-        x = .data[["x"]], # nolint
-        y = .data[["y"]],
         fill = .data[["pw"]]
       ),
       color = "grey25",
       alpha = 1
     ) +
-    # edge attributes
-    ggraph::geom_edge_link(
+    # graph edges and attributes
+    ggraph::geom_edge_arc(
       ggplot2::aes(
         label = ifelse(
           .data[["set_alpha_edge"]] == 0.25, # nolint
           "",
-          .data[["enzyme.id"]]
+          .data[["col.gene"]]
         ),
         alpha = .data[["set_alpha_edge"]]
       ),
+      curvature = 0.1,
       label_dodge = ggplot2::unit(2, "mm"),
-      alpha = 0.5,
-      label_alpha = 0.0,
+      arrow = ggplot2::arrow(length = ggplot2::unit(4, "mm"), type = "closed"),
+      start_cap = ggraph::circle(3, "mm"),
+      end_cap = ggraph::circle(3, "mm"),
       angle_calc = "along",
-      color = "grey50",
-      show.legend = FALSE
+      alpha = 0.5,
+      label_alpha = lab_a,
+      color = "grey50"
     ) +
     # node points
     ggraph::geom_node_point(
