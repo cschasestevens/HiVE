@@ -23,14 +23,52 @@ getwd()
 d
 ```
 
-## Plot HiVE networks
+## Plot base HiVE networks
 ```{r netbase, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
-# Base
+# Base networks
+## Main
 hive_base()
-# Annotation counts
+## Oxylipins subnetwork
+hive_base(type = "oxylipins")
+
+# Subset base networks
+## Oxylipins subsets
+hive_base(type = "oxylipins", filt_pw = "AA")
+```
+
+## Plot lipid annotation HiVE networks
+```{r netanno, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
+# Annotated lipids mapped to network
 hive_anno(enr_obj = d)
+```
+
+## Plot lipid class enrichment HiVE networks
+```{r netenr, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Enrichment network
-## Filter classes without saturation level information
 hive_enrch(enr_obj = d)
-# Planned: lipid class flux comparison
+```
+
+## Plot individual lipid/gene level data onto subnetworks
+```{r netindv, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
+# Individual-level HiVE network
+hive_indv(stat_obj = d2)
+# Gene expression networks can also be plotted;
+# Change plot_mode to "transcriptomics" and upload a Seurat object
+```
+
+## Plot multimodal data onto subnetworks
+```{r netmult, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
+```
+
+## Plot lipid flux (ratios) onto networks
+```{r netflux, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
+```
+
+## Plot individual panels from networks
+```{r netpanel, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
+hive_panel_node(
+  stat_obj = d2,
+  name_node = "HETE",
+  p_size = 10
+)
 ```

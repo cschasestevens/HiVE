@@ -121,3 +121,25 @@
 #' }
 #' @source HiVE v1.10
 "netgene"
+
+#' Example Network Data 2
+#'
+#' Example data for constructing individual lipid-level network plots
+#' based on lipidomics data.
+#'
+#' @format ## `d2`
+#' A data frame with 53 rows and 9 columns:
+#' \describe{
+#'   \item{Type}{sample type}
+#'   \item{Name}{lipid name}
+#'   \item{Comparison}{group comparison}
+#'   \item{p.adj}{adjusted p-value}
+#'   \item{FDR}{FDR adjusted p-value}
+#'   \item{Comparison.fc}{fold change comparison direction}
+#'   \item{Log2FC}{fold change}
+#'   \item{label}{lipid class label}
+#'   \item{n}{number of lipids in class}
+#'   ...
+#' }
+#' @source HiVE v1.10
+"d2"
