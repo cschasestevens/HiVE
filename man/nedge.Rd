@@ -16,6 +16,7 @@ A data frame with 68 rows and 8 columns:
   \item{hgnc.symbols}{associated genes}
   \item{SetID}{lipid set identity}
   \item{Level}{network level}
+  \item{associated.ratio}{Lipid ratio comparison reference}
   ...
 }
 }

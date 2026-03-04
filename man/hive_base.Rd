@@ -4,14 +4,17 @@
 \alias{hive_base}
 \title{Lipid Network Plot}
 \usage{
-hive_base(level = 0, lab_a = 0)
+hive_base(type = "base", lab_a = 0, filt_pw = NULL)
 }
 \arguments{
-\item{level}{Base level to plot (either 0 or 1). Level 1 contains
-finer class-based separation while 0 (default) plots higher level
-lipid classes.}
+\item{type}{Network type to plot; current lipid networks available are
+"base" (Default) and "oxylipins", which is a more detailed subnetwork
+of HiVE base.}
 
 \item{lab_a}{Alpha value for enzyme names (default is transparent).}
+
+\item{filt_pw}{Filter by a specific pathway present in either the "base"
+or "oxylipins" networks.}
 }
 \value{
 A ggplot2 object plotting the HiVE base network.

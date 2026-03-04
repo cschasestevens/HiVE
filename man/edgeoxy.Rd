@@ -16,6 +16,8 @@ A data frame with 56 rows and 8 columns:
   \item{hgnc.symbols}{associated genes}
   \item{SetID}{lipid set identity}
   \item{Level}{network level}
+  \item{major.enzyme}{primary oxylipin enzyme pathway}
+  \item{start.fa}{Starting fatty acid name}
   ...
 }
 }

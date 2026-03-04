@@ -1,4 +1,4 @@
-# HiVE v1.10 (20260210)
+# HiVE v1.10 (20260303)
 
 High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 
@@ -16,19 +16,28 @@ This package provides tools for comprehensive visualization and analysis of mult
     * Suggests: 
         * knitr,
         * rmarkdown,
-        * reticulate
+        * reticulate,
+        * Seurat
     * Imports:
-        * dplyr,
-        * ggrepel,
-        * ggplot2,
-        * viridis,
-        * ggsci,
-        * RColorBrewer,
-        * rcdk,
-        * igraph,
-        * ggraph,
-        * sf,
-        * concaveman
+        *   ggsci,
+        *   viridis,
+        *   RColorBrewer,
+        *   ggplot2,
+        *   igraph,
+        *   ggraph,
+        *   dplyr,
+        *   sf,
+        *   concaveman,
+        *   ggrepel,
+        *   tidyr,
+        *   ggnewscale,
+        *   shadowtext,
+        *   SeuratObject,
+        *   gtools,
+        *   magrittr,
+        *   reshape2,
+        *   ggforce,
+        *   rcdk
 
 ### Installation
 * Run the following in a new R session on the command line or within R-Studio:
@@ -64,12 +73,13 @@ browseVignettes("HiVE")
 
 ## Version History
 * 1.10
+    * Added functions for generating individual plot components. This option is useful for preparing publication quality network plots.
     * Updated Network structure for HiVE base and oxylipin pathways.
-    * Added support for COMb S4 objects as plot inputs, which are now the default option for all network plot types.
-    * Expression data from single-cell transcriptomics datasets are automatically filtered based on lipid-related genes present in HiVE edge data.
-    * Plot functions now support single-cell transcriptomics data provided from Seurat objects
-    * Updated tutorial to reflect changes in version 1.10
-    * Bioconductor packages now automatically installed
+    * Added function for plotting individual lipid/gene-level data.
+    * Plot functions now support single-cell transcriptomics data.
+    * Added support for plotting lipid flux comparisons.
+    * Updated tutorial to reflect changes in version 1.10.
+    * Bioconductor packages now automatically installed.
 * 1.03
     * Added HiVE enrichment network
 * 1.02

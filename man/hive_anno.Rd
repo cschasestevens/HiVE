@@ -4,17 +4,20 @@
 \alias{hive_anno}
 \title{Lipid Network Annotation Plot}
 \usage{
-hive_anno(level = 0, enr_obj)
+hive_anno(type = "base", lab_a = 0.5, enr_obj)
 }
 \arguments{
-\item{level}{Base level to plot (either 0 or 1). Level 1 contains
-finer class-based separation while 0 (default) plots higher level
-lipid classes.}
+\item{type}{Network type to plot; current lipid networks available are
+"base" (Default) and "oxylipins", which is a more detailed subnetwork
+of HiVE base.}
+
+\item{lab_a}{Alpha value for enzyme names (default is transparent).}
 
 \item{enr_obj}{An enrichment object including lipid class labels
 and the number of lipids within each class. The labels must match
 nodes from the HiVE base network nodes to properly function. Example
-data are included for formatting help.}
+data are included for formatting help. Univariate statistical results
+can also be provided as input for annotating subnetwork plots.}
 }
 \value{
 A ggplot2 object plotting the HiVE annotation network.

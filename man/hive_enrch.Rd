@@ -4,12 +4,14 @@
 \alias{hive_enrch}
 \title{Lipid Network Enrichment Plot}
 \usage{
-hive_enrch(level = 0, enr_obj, comp_sat = TRUE)
+hive_enrch(type = "base", lab_a = 0.5, enr_obj, comp_sat = TRUE)
 }
 \arguments{
-\item{level}{Base level to plot (either 0 or 1). Level 1 contains
-finer class-based separation while 0 (default) plots higher level
-lipid classes.}
+\item{type}{Network type to plot; current lipid networks available are
+"base" (Default) and "oxylipins", which is a more detailed subnetwork
+of HiVE base.}
+
+\item{lab_a}{Edge label alpha value.}
 
 \item{enr_obj}{An enrichment object including lipid class labels
 and the number of lipids within each class. The labels must match
@@ -30,7 +32,9 @@ of individual lipids present in the dataset for each class, node
 colors represent the proportion of increased/decreased lipids
 within a specific class, and yellow boxes indicate classes that
 are significantly enriched in the selected comparison. See
-HiVE example data for more details.
+HiVE example data for more details. Please note that if plotting
+data onto a subnetwork, additional data formatting is necessary as
+these data are usually not provided as enrichment objects.
 }
 \examples{
 

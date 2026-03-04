@@ -33,7 +33,7 @@ hive_anno <- function(
     # format nodes
     nn <- nnode # nolint
     ## gene/enzyme column
-    ne[["col.gene"]] <- ne[["enzyme.id"]]
+    ne[["col.gene"]] <- ne[["id.gene"]]
     ## pathway column
     nn[["pathway"]] <- nn[["synthesis.pathway"]]
   }
@@ -174,7 +174,7 @@ hive_anno <- function(
         ),
         alpha = .data[["set_alpha_edge"]]
       ),
-      curvature = 0.1,
+      strength = 0.1,
       label_dodge = ggplot2::unit(2, "mm"),
       arrow = ggplot2::arrow(length = ggplot2::unit(4, "mm"), type = "closed"),
       start_cap = ggraph::circle(3, "mm"),

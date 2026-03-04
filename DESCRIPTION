@@ -1,5 +1,5 @@
 Package: HiVE
-Date: 2026-02-10
+Date: 2026-03-03
 Type: Package
 Title: High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 Version: 1.10
@@ -14,22 +14,28 @@ VignetteBuilder: knitr
 Suggests: 
   knitr,
   rmarkdown,
-  reticulate
+  reticulate,
+  Seurat
 biocViews:
-Imports: 
-  shadowtext,
-  tidyr,
-  ggnewscale,
-  ggplot2,
-  dplyr,
-  ggrepel,
+Imports:
   ggsci,
   viridis,
   RColorBrewer,
-  rcdk,
+  ggplot2,
   igraph,
   ggraph,
+  dplyr,
   sf,
-  concaveman
+  concaveman,
+  ggrepel,
+  tidyr,
+  ggnewscale,
+  shadowtext,
+  SeuratObject,
+  gtools,
+  magrittr,
+  reshape2,
+  ggforce,
+  rcdk
 Depends: 
     R (>= 4.5)

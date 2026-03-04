@@ -18,6 +18,7 @@ A data frame with 52 rows and 10 columns:
   \item{Level}{network level}
   \item{hive_x}{node x coordinate}
   \item{hive_y}{node y coordinate}
+  \item{fatty.acid}{starting fatty acid}
   ...
 }
 }
