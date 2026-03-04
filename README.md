@@ -50,6 +50,18 @@ devtools::install_github(
 )
 ```
 
+* When installing spatial packages (e.g. sf), GDAL system libraries must be installed first. If running HiVE in Linux, install using the following command within the conda environment:
+
+```
+$ sudo apt-get install libgdal-dev gdal-bin libproj-dev libgeos-dev
+```
+
+* To fix potential error installing spatial dependencies (e.g. units), run the following within the conda environment:
+
+```
+$ sudo apt-get install libudunits2-dev
+```
+
 ## Help
 * Browse vignettes by running the following:
 
