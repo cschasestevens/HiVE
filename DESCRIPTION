@@ -1,8 +1,8 @@
 Package: HiVE
-Date: 2026-03-03
+Date: 2026-03-27
 Type: Package
 Title: High-dimensional lipid Visualization and Enrichment analysis (HiVE)
-Version: 1.10
+Version: 1.11
 Author: Nathanial C. Stevens
 Maintainer: Nathanial C. Stevens <cschasestevens@gmail.com>
 Description: This package provides tools for comprehensive visualization and analysis of multiomics data characterizing lipids.    HiVE integrates underlying knowledge of curated lipid metabolic pathways for quick mapping and analysis of lipidomics data onto a predefined network structure.    Flexible data formats supported by HiVE also enable simultaneous or individual mapping of complementary proteomics or transcriptomics datasets containing lipid metabolizing enzymes or lipid-related genes.

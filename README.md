@@ -1,10 +1,12 @@
-# HiVE v1.10 (20260303)
+# HiVE v1.11 (20260327)
 
 High-dimensional lipid Visualization and Enrichment analysis (HiVE)
 
 ## Description
 
 This package provides tools for comprehensive visualization and analysis of multiomics data characterizing lipids.    HiVE integrates underlying knowledge of curated lipid metabolic pathways for quick mapping and analysis of lipidomics data onto a predefined network structure.    Flexible data formats supported by HiVE also enable simultaneous or individual mapping of complementary proteomics or transcriptomics datasets containing lipid metabolizing enzymes or lipid-related genes.
+
+This package is intended as an extension COMb (https://github.com/cschasestevens/COMb), which is used for analyzing untargeted metabolomics/lipidomics datasets. However, all functions can be run without using COMb for prior data analysis.
 
 ## Getting Started
 
@@ -84,6 +86,8 @@ browseVignettes("HiVE")
 * LinkedIn: https://www.linkedin.com/in/nathanial-chase-stevens-phd-08775180/
 
 ## Version History
+* 1.11
+    * Updated hive_anno, hive_enrch, and hive_flux parameters for additional input data flexibility.
 * 1.10
     * Added functions for generating individual plot components. This option is useful for preparing publication quality network plots.
     * Updated Network structure for HiVE base and oxylipin pathways.

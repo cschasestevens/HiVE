@@ -4,7 +4,13 @@
 \alias{hive_enrch}
 \title{Lipid Network Enrichment Plot}
 \usage{
-hive_enrch(type = "base", lab_a = 0.5, enr_obj, comp_sat = TRUE)
+hive_enrch(
+  type = "base",
+  lab_a = 0.5,
+  enr_obj,
+  col_lab = "Class",
+  col_sat = "label.saturation"
+)
 }
 \arguments{
 \item{type}{Network type to plot; current lipid networks available are
@@ -18,9 +24,13 @@ and the number of lipids within each class. The labels must match
 nodes from the HiVE base network nodes to properly function. Example
 data are included for formatting help.}
 
-\item{comp_sat}{Compare enrichment results split by lipid saturation.
-This is currently the only option but more will be supported in
-furture package versions.}
+\item{col_lab}{Compound class column name from the input enrichment
+object.}
+
+\item{col_sat}{Column name that indicates the saturation degree
+of each lipid class included in the input enrichment object. Use the
+same column for both col_lab and col_sat if compound classes split
+by saturation degree are not available.}
 }
 \value{
 A ggplot2 object plotting a HiVE enrichment network.

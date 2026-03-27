@@ -39,13 +39,13 @@ hive_base(type = "oxylipins", filt_pw = "AA")
 ## Plot lipid annotation HiVE networks
 ```{r netanno, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Annotated lipids mapped to network
-hive_anno(enr_obj = d)
+hive_anno(enr_obj = d, col_lab = "label")
 ```
 
 ## Plot lipid class enrichment HiVE networks
 ```{r netenr, echo=TRUE, results=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Enrichment network
-hive_enrch(enr_obj = d)
+hive_enrch(enr_obj = d, col_lab = "label")
 ```
 
 ## Plot individual lipid/gene level data onto subnetworks

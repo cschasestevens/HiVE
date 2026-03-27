@@ -11,16 +11,16 @@
 #' of HiVE base.
 #' @param lab_a Edge label alpha value.
 #' @param stat_obj A data frame of statistical results containing
-#' fold changes and p-values. Must have one column called "associated.ratio"
-#' to map the statistical results onto the HiVE network.
+#' fold changes and p-values run by ms_stat_uni using the "HiVE" method.
 #' @param col_fc Fold change column name.
 #' @param col_p p value column name.
+#' @param col_rat Column containing associated lipid class ratios.
 #'
 #' @return A ggplot2 object plotting a HiVE flux network.
 #' @examples
 #'
 #' # ## Annotation count network
-#' # hive_enrch(enr_obj = d)
+#' # hive_flux(enr_obj = d)
 #'
 #' @export
 hive_flux <- function( # nolint
@@ -28,13 +28,14 @@ hive_flux <- function( # nolint
   lab_a = 0.5,
   stat_obj,
   col_fc = "Log2FC",
-  col_p = "p adj"
+  col_p = "p adj",
+  col_rat = "Name"
 ) {
   if (type == "base") {
     # format edges
-    ne <- nedge # nolint
+    ne <- HiVE::nedge # nolint
     # format nodes
-    nn <- nnode # nolint
+    nn <- HiVE::nnode # nolint
     ## gene/enzyme column
     ne[["col.gene"]] <- ne[["id.gene"]]
     ## pathway column
@@ -42,18 +43,21 @@ hive_flux <- function( # nolint
   }
   if (type == "oxylipins") {
     # format edges
-    ne <- edgeoxy # nolint
+    ne <- HiVE::edgeoxy # nolint
     # format nodes
-    nn <- nodeoxy # nolint
+    nn <- HiVE::nodeoxy # nolint
     ## gene/enzyme column
     ne[["col.gene"]] <- ne[["id.gene"]]
     ## pathway column
     nn[["pathway"]] <- nn[["fatty.acid"]]
   }
+  # define associated ratio column from stats object
+  net1 <- stat_obj
+  net1[["associated.ratio"]] <- net1[[col_rat]]
   # format data
   ne <- dplyr::left_join(
     ne,
-    stat_obj,
+    net1,
     by = "associated.ratio"
   )
   #---- Lipid ratio network ----
@@ -75,7 +79,6 @@ hive_flux <- function( # nolint
   ### define color scale
   col_fun <- colorRampPalette(col_grad(scm = 5))
   col_len <- col_fun(length(ne[["color_edge"]]))
-  col_len
   ne[["color_edge_names"]] <- col_len
   ### define linetype for significant ratios
   ne[["ratio_sig"]] <- ifelse(

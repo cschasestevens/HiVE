@@ -9,7 +9,8 @@ hive_flux(
   lab_a = 0.5,
   stat_obj,
   col_fc = "Log2FC",
-  col_p = "p adj"
+  col_p = "p adj",
+  col_rat = "Name"
 )
 }
 \arguments{
@@ -20,12 +21,13 @@ of HiVE base.}
 \item{lab_a}{Edge label alpha value.}
 
 \item{stat_obj}{A data frame of statistical results containing
-fold changes and p-values. Must have one column called "associated.ratio"
-to map the statistical results onto the HiVE network.}
+fold changes and p-values run by ms_stat_uni using the "HiVE" method.}
 
 \item{col_fc}{Fold change column name.}
 
 \item{col_p}{p value column name.}
+
+\item{col_rat}{Column containing associated lipid class ratios.}
 }
 \value{
 A ggplot2 object plotting a HiVE flux network.
@@ -40,6 +42,6 @@ classes was not calculated. See HiVE example data for more details.
 \examples{
 
 # ## Annotation count network
-# hive_enrch(enr_obj = d)
+# hive_flux(enr_obj = d)
 
 }

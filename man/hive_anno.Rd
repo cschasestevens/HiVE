@@ -4,7 +4,7 @@
 \alias{hive_anno}
 \title{Lipid Network Annotation Plot}
 \usage{
-hive_anno(type = "base", lab_a = 0.5, enr_obj)
+hive_anno(type = "base", lab_a = 0.5, enr_obj, col_lab = "Class")
 }
 \arguments{
 \item{type}{Network type to plot; current lipid networks available are
@@ -18,6 +18,9 @@ and the number of lipids within each class. The labels must match
 nodes from the HiVE base network nodes to properly function. Example
 data are included for formatting help. Univariate statistical results
 can also be provided as input for annotating subnetwork plots.}
+
+\item{col_lab}{Compound class column name from the input enrichment
+object.}
 }
 \value{
 A ggplot2 object plotting the HiVE annotation network.

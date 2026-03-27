@@ -14,6 +14,8 @@
 #' nodes from the HiVE base network nodes to properly function. Example
 #' data are included for formatting help. Univariate statistical results
 #' can also be provided as input for annotating subnetwork plots.
+#' @param col_lab Compound class column name from the input enrichment
+#' object.
 #'
 #' @return A ggplot2 object plotting the HiVE annotation network.
 #' @examples
@@ -25,13 +27,14 @@
 hive_anno <- function(
   type = "base",
   lab_a = 0.5,
-  enr_obj
+  enr_obj,
+  col_lab = "Class"
 ) {
   if (type == "base") {
     # format edges
-    ne <- nedge # nolint
+    ne <- HiVE::nedge # nolint
     # format nodes
-    nn <- nnode # nolint
+    nn <- HiVE::nnode # nolint
     ## gene/enzyme column
     ne[["col.gene"]] <- ne[["id.gene"]]
     ## pathway column
@@ -39,9 +42,9 @@ hive_anno <- function(
   }
   if (type == "oxylipins") {
     # format edges
-    ne <- edgeoxy # nolint
+    ne <- HiVE::edgeoxy # nolint
     # format nodes
-    nn <- nodeoxy # nolint
+    nn <- HiVE::nodeoxy # nolint
     ## gene/enzyme column
     ne[["col.gene"]] <- ne[["id.gene"]]
     ## pathway column
@@ -49,6 +52,7 @@ hive_anno <- function(
   }
   # format data
   net1 <- enr_obj
+  net1[["label"]] <- net1[[col_lab]]
   #---- Annotation network ----
   # Map dataset annotations
   if (type == "base") {
